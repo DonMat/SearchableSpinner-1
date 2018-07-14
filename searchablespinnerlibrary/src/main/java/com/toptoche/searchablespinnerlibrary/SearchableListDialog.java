@@ -93,10 +93,10 @@ public class SearchableListDialog extends DialogFragment implements
         AlertDialog.Builder alertDialog = new AlertDialog.Builder(getActivity());
         alertDialog.setView(rootView);
 
-        String strPositiveButton = _strPositiveButtonText == null ? "CLOSE" : _strPositiveButtonText;
+        String strPositiveButton = _strPositiveButtonText == null ? getString(R.string.search_dialog_close) : _strPositiveButtonText;
         alertDialog.setPositiveButton(strPositiveButton, _onClickListener);
 
-        String strTitle = _strTitle == null ? "Select Item" : _strTitle;
+        String strTitle = _strTitle == null ? getString(R.string.search_dialog_title) : _strTitle;
         alertDialog.setTitle(strTitle);
 
         final AlertDialog dialog = alertDialog.create();

@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">SearchableSpinnerLibrary</string>
+    <string name="search_dialog_close">Close</string>
+    <string name="search_dialog_title">Select item…</string>
 </resources>

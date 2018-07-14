@@ -10,18 +10,27 @@ Searchable Spinner is a dialog spinner with the search feature which allows to s
 # Gradle
     dependencies {
         ...
-        compile 'com.toptoche.searchablespinner:searchablespinnerlibrary:1.3.1'
+        implementation 'com.github.DonMat:searchablespinner2:v1.4.0'
     }
 
 # Usage
     <com.toptoche.searchablespinnerlibrary.SearchableSpinner
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            app:hintText="SELECT"
+            app:dialogTitle="Select Item"
+            app:closeText="Close"/>
+
+    OR
 
     searchableSpinner.setTitle("Select Item");
     searchableSpinner.setPositiveButton("OK");
     
 # Changelog
+ * <b>1.4.0</b>
+    * Add ability to set Dialog title and close button text from XML
+ * <b>1.3.2, 1.3.3</b>
+    * General bugs fixes.
  * <b>1.3.1</b>
     * Bug fixes.
  * <b>1.3.0</b>
