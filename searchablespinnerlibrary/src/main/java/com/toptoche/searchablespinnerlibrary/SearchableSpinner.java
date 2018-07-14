@@ -25,7 +25,7 @@ public class SearchableSpinner extends Spinner implements View.OnTouchListener,
     private SearchableListDialog _searchableListDialog;
 
     private boolean _isDirty;
-    private ArrayAdapter _arrayAdapter;
+    private SpinnerAdapter _arrayAdapter;
     private String _strHintText;
     private boolean _isFromInit;
 
@@ -63,7 +63,7 @@ public class SearchableSpinner extends Spinner implements View.OnTouchListener,
         _searchableListDialog.setOnSearchableItemClickListener(this);
         setOnTouchListener(this);
 
-        _arrayAdapter = (ArrayAdapter) getAdapter();
+        _arrayAdapter = getAdapter();
         if (!TextUtils.isEmpty(_strHintText)) {
             ArrayAdapter arrayAdapter = new ArrayAdapter(_context, android.R.layout
                     .simple_list_item_1, new String[]{_strHintText});
@@ -78,7 +78,6 @@ public class SearchableSpinner extends Spinner implements View.OnTouchListener,
             return true;
         }
         if (event.getAction() == MotionEvent.ACTION_UP) {
-
             if (null != _arrayAdapter) {
 
                 // Refresh content #6
@@ -91,7 +90,9 @@ public class SearchableSpinner extends Spinner implements View.OnTouchListener,
                 }
                 // Change end.
 
-                _searchableListDialog.show(scanForActivity(_context).getFragmentManager(), "TAG");
+                if (!_searchableListDialog.isVisible()) {
+                    _searchableListDialog.show(scanForActivity(_context).getFragmentManager(), "search");
+                }
             }
         }
         return true;
@@ -101,7 +102,7 @@ public class SearchableSpinner extends Spinner implements View.OnTouchListener,
     public void setAdapter(SpinnerAdapter adapter) {
 
         if (!_isFromInit) {
-            _arrayAdapter = (ArrayAdapter) adapter;
+            _arrayAdapter = adapter;
             if (!TextUtils.isEmpty(_strHintText) && !_isDirty) {
                 ArrayAdapter arrayAdapter = new ArrayAdapter(_context, android.R.layout
                         .simple_list_item_1, new String[]{_strHintText});
